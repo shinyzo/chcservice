@@ -5,6 +5,7 @@ import com.lming.chcservice.constant.RedisConstant;
 import com.lming.chcservice.converter.UserInfo2UserInfoDTOConverter;
 import com.lming.chcservice.dto.UserInfoDTO;
 import com.lming.chcservice.enums.ResultEnum;
+import com.lming.chcservice.model.MobileNav;
 import com.lming.chcservice.model.UserInfo;
 import com.lming.chcservice.service.UserService;
 import com.lming.chcservice.util.CookieUtil;
@@ -20,18 +21,21 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Controller
+@RestController
+@RequestMapping("/")
 @Slf4j
 public class IndexController {
 
 
-    @RequestMapping("/index")
-    public ModelAndView index(){
-       return new ModelAndView("index.html");
+    @GetMapping(value = "index")
+    public String index(){
+
+        return "Hi, CHC Service is Running !";
     }
 
 }
