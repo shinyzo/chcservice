@@ -3,6 +3,9 @@ package com.lming.chcservice.exception;
 import com.lming.chcservice.enums.ResultEnum;
 import lombok.Getter;
 
+/**
+ * 处理过程中的异常
+ */
 @Getter
 public class ChcProcessException extends RuntimeException{
 

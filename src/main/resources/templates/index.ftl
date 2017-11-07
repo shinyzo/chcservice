@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CHC社区医院后端服务</title>
+    <title>CHC - 社区医院后端服务平台</title>
 </head>
 <body>
-    CHC SERVICE IS OK !
+    CHC Service is Running.
 </body>
 </html>

@@ -33,7 +33,7 @@ public class MobileNavController {
         // 根据用户的openid获取用户信息
         UserInfo userInfo = userService.findOne(openid);
         // 根据用户信息获取用户的导航
-        List<MobileNav> mobileNavList = mobileNavService.getNavByUsertype(userInfo.getUsertype());
+        List<MobileNav> mobileNavList = mobileNavService.getNavByRoleId(userInfo.getRoleId());
         log.info("【导航列表】 -获取用户导航列表，navList={}",mobileNavList);
         return ResultVOUtil.success(mobileNavList);
     }

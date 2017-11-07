@@ -5,7 +5,7 @@ import com.lming.chcservice.dao.UserNavRepository;
 import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.exception.ChcProcessException;
 import com.lming.chcservice.model.MobileNav;
-import com.lming.chcservice.model.UserNav;
+import com.lming.chcservice.model.RoleNav;
 import com.lming.chcservice.service.MobileNavService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +26,20 @@ public class MobileNavServiceImpl implements MobileNavService{
     private MobileNavRepository repository;
 
     @Override
-    public List<MobileNav> getNavByUsertype(String usertype) {
-        if(StringUtils.isEmpty(usertype))
+    public List<MobileNav> getNavByRoleId(Integer roleId) {
+        if(StringUtils.isEmpty(roleId))
         {
-            log.error("【导航菜单】- 用户usertype为空.");
-            throw new ChcProcessException(ResultEnum.USERTYPE_EMPTY);
+            log.error("【导航菜单】- 用户roleId为空.");
+            throw new ChcProcessException(ResultEnum.ROLEID_EMPTY);
         }
-        List<UserNav> userNavList = userNavRepository.findByUsertype(usertype);
+        List<RoleNav> userNavList = userNavRepository.findByRoleId(roleId);
         if(CollectionUtils.isEmpty(userNavList)){
-            log.info("【导航菜单】- 用户未配置菜单，usertype={}",usertype);
+            log.info("【导航菜单】- 用户未配置菜单，roleId={}",roleId);
             return null;
         }
 
         List<String> navIdList =new ArrayList<String>();
-        for(UserNav userNav:userNavList){
+        for(RoleNav userNav:userNavList){
             navIdList.add(userNav.getNavId());
         }
 

@@ -26,16 +26,16 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@RestController
+@Controller
 @RequestMapping("/")
 @Slf4j
 public class IndexController {
 
 
-    @GetMapping(value = "index")
-    public String index(){
+    @GetMapping(value = "/index")
+    public ModelAndView index(){
 
-        return "Hi, CHC Service is Running !";
+        return new ModelAndView("index");
     }
 
 }

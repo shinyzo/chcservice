@@ -47,6 +47,10 @@ public class UserInfo {
      */
     private String usertype;
     /**
+     * 角色id
+     */
+    private Integer roleId;
+    /**
      * 用户状态
      */
     private String userStatus;

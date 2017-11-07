@@ -7,7 +7,7 @@ import java.util.List;
 public interface MobileNavService {
 
 
-    public List<MobileNav> getNavByUsertype(String usertype);
+    public List<MobileNav> getNavByRoleId(Integer roleId);
 
 
 

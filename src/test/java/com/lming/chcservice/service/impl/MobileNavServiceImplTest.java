@@ -25,9 +25,9 @@ public class MobileNavServiceImplTest {
     private MobileNavService mobileNavService;
 
     @Test
-    public void getNavByUsertype() throws Exception {
+    public void getNavByRoleId() throws Exception {
 
-       List<MobileNav> mobileNavList =  mobileNavService.getNavByUsertype(UserTypeEnum.USER_DOCTOR.getCode().toString());
+       List<MobileNav> mobileNavList =  mobileNavService.getNavByRoleId(1);
        log.info("导航列表："+mobileNavList);
        Assert.assertNotNull(mobileNavList);
     }
