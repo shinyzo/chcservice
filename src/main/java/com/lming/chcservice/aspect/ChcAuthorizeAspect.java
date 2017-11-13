@@ -36,6 +36,7 @@ public class ChcAuthorizeAspect {
     @Pointcut("execution(public * com.lming.chcservice.controller.*.*(..))"
             + "&& !execution(public * com.lming.chcservice.controller.LoginController.*(..))"
             + "&& !execution(public * com.lming.chcservice.controller.IndexController.*(..))"
+            + "&& !execution(public * com.lming.chcservice.controller.MobileNavController.*(..))"
     )
     public void verify(){};
 

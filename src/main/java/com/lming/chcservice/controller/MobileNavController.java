@@ -26,7 +26,7 @@ public class MobileNavController {
     @Autowired
     private MobileNavService mobileNavService;
 
-    @PostMapping(value = "/list")
+    @PostMapping(value = "/list2")
     public ResultVO list(@RequestParam("token") String token){
         // 从redis缓存中根据用户的token取openid
         String openid = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX,token));
@@ -38,5 +38,13 @@ public class MobileNavController {
         return ResultVOUtil.success(mobileNavList);
     }
 
+
+    @GetMapping(value = "/list")
+    public ResultVO list(){
+        // 根据用户信息获取用户的导航
+        List<MobileNav> mobileNavList = mobileNavService.getNavByRoleId(1);
+        log.info("【导航列表】 -获取用户导航列表，navList={}",mobileNavList);
+        return ResultVOUtil.success(mobileNavList);
+    }
 
 }

@@ -35,7 +35,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResultVO login(@RequestParam("loginName") String loginName,
                           @RequestParam("loginPass") String loginPass,
                           HttpServletResponse response){
