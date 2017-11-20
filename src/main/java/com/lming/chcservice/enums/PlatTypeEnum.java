@@ -7,6 +7,7 @@ public enum PlatTypeEnum {
 
     P("个人版"),
     D("医生版"),;
+
     private String desc;
 
     PlatTypeEnum(String desc) {

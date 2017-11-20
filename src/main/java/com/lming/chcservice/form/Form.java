@@ -1,5 +1,10 @@
 package com.lming.chcservice.form;
 
+import lombok.Data;
+
+import javax.validation.Valid;
+
+@Data
 public class Form {
     /**
      * 版本号
@@ -22,5 +27,17 @@ public class Form {
      * 个人版
      * 医生版
      */
-    private String plat;
+    private String platType;
+
+    /**
+     * 随机数
+     */
+    private String randomKey;
+
+    /**
+     * 前端加密数据
+     */
+    private String signData;
+
+
 }
