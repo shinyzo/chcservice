@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 用户信息模型层
+ */
 @Entity
 @Data
 @DynamicUpdate

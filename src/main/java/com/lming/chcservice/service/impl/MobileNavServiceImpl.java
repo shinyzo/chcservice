@@ -1,12 +1,11 @@
 package com.lming.chcservice.service.impl;
 
 import com.lming.chcservice.dao.MobileNavRepository;
-import com.lming.chcservice.dao.UserNavRepository;
+import com.lming.chcservice.dao.PlatNavRepository;
 import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.exception.ChcProcessException;
-import com.lming.chcservice.mapper.MobileNavMapper;
 import com.lming.chcservice.model.MobileNav;
-import com.lming.chcservice.model.RoleNav;
+import com.lming.chcservice.model.PlatNav;
 import com.lming.chcservice.service.MobileNavService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,28 +20,24 @@ import java.util.List;
 public class MobileNavServiceImpl implements MobileNavService{
 
     @Autowired
-    private UserNavRepository userNavRepository;
+    private PlatNavRepository platNavRepository;
 
 
     @Autowired
     private MobileNavRepository repository;
 
     @Override
-    public List<MobileNav> getNavByRoleId(Integer roleId) {
-        if(StringUtils.isEmpty(roleId))
-        {
-            log.error("【导航菜单】- 用户roleId为空.");
-            throw new ChcProcessException(ResultEnum.ROLEID_EMPTY);
-        }
-        List<RoleNav> userNavList = userNavRepository.findByRoleId(roleId);
-        if(CollectionUtils.isEmpty(userNavList)){
-            log.info("【导航菜单】- 用户未配置菜单，roleId={}",roleId);
+    public List<MobileNav> getNavByPlatType(String platType) {
+
+        List<PlatNav> PlatNavList = platNavRepository.findByPlatType(platType);
+        if(CollectionUtils.isEmpty(PlatNavList)){
+            log.error("【导航菜单】- APP类型菜单未配置，platType={}",platType);
             return null;
         }
 
         List<String> navIdList =new ArrayList<String>();
-        for(RoleNav userNav:userNavList){
-            navIdList.add(userNav.getNavId());
+        for(PlatNav platNav:PlatNavList){
+            navIdList.add(platNav.getNavId());
         }
 
         return repository.findByNavIdIn(navIdList);

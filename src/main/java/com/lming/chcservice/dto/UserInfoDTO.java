@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 返回给前端数据
+ */
 @Data
 public class UserInfoDTO {
 

@@ -8,10 +8,11 @@ import lombok.Getter;
 @Getter
 public enum UserTypeEnum {
 
-    USER_DOCTOR("1","医生"),
-    USER_PATIENT("2","病人"),
+
+    USER_PATIENT("1","个人"),
+    USER_DOCTOR("2","医生"),
     USER_HOSPITAL("3","社区医院"),
-    USER_CORP("4","供货商"),
+    USER_CORP("4","药商"),
     ;
     private String code;
 

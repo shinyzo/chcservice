@@ -1,6 +1,9 @@
 package com.lming.chcservice.controller;
 
 import com.lming.chcservice.constant.RedisConstant;
+import com.lming.chcservice.enums.PlatTypeEnum;
+import com.lming.chcservice.enums.ResultEnum;
+import com.lming.chcservice.exception.ChcProcessException;
 import com.lming.chcservice.model.MobileNav;
 import com.lming.chcservice.model.UserInfo;
 import com.lming.chcservice.service.MobileNavService;
@@ -27,22 +30,27 @@ public class MobileNavController {
     private MobileNavService mobileNavService;
 
     @PostMapping(value = "/list2")
-    public ResultVO list(@RequestParam("token") String token){
+    public ResultVO list2(@RequestParam("token") String token){
         // 从redis缓存中根据用户的token取openid
         String openid = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX,token));
         // 根据用户的openid获取用户信息
         UserInfo userInfo = userService.findOne(openid);
         // 根据用户信息获取用户的导航
-        List<MobileNav> mobileNavList = mobileNavService.getNavByRoleId(userInfo.getRoleId());
+        List<MobileNav> mobileNavList = mobileNavService.getNavByPlatType(PlatTypeEnum.P.toString());
         log.info("【导航列表】 -获取用户导航列表，navList={}",mobileNavList);
         return ResultVOUtil.success(mobileNavList);
     }
 
 
     @GetMapping(value = "/list")
-    public ResultVO list(){
+    public ResultVO list(@RequestParam("platType") String platType){
         // 根据用户信息获取用户的导航
-        List<MobileNav> mobileNavList = mobileNavService.getNavByRoleId(1);
+        PlatTypeEnum platTypeEnum = PlatTypeEnum.getPlatTypeEnum(platType);
+        if(platTypeEnum==null)
+        {
+            throw new ChcProcessException(ResultEnum.APP_TYPE_ERROR);
+        }
+        List<MobileNav> mobileNavList = mobileNavService.getNavByPlatType(platTypeEnum.toString());
         log.info("【导航列表】 -获取用户导航列表，navList={}",mobileNavList);
         return ResultVOUtil.success(mobileNavList);
     }

@@ -11,6 +11,7 @@ public enum ResultEnum {
     ROLEID_EMPTY("102", "用户权限id为空"),
 
     TOKEN_TIMEOUT("777","用户长时间未操作，超时退出"),
+    APP_TYPE_ERROR("771","APP类型不合法，请使用官方版!"),
     ;
 
     private String code;

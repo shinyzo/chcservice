@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class RoleNav {
+public class PlatNav {
 
     /**
      * 主键id
@@ -19,9 +19,9 @@ public class RoleNav {
     private Integer id;
 
     /**
-     * 角色id
+     * 平台类型
      */
-    private Integer roleId;
+    private String platType;
     /**
      * 导航id
      */
