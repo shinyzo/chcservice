@@ -4,6 +4,7 @@ import com.lming.chcservice.dao.MobileNavRepository;
 import com.lming.chcservice.dao.UserNavRepository;
 import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.exception.ChcProcessException;
+import com.lming.chcservice.mapper.MobileNavMapper;
 import com.lming.chcservice.model.MobileNav;
 import com.lming.chcservice.model.RoleNav;
 import com.lming.chcservice.service.MobileNavService;
@@ -21,6 +22,7 @@ public class MobileNavServiceImpl implements MobileNavService{
 
     @Autowired
     private UserNavRepository userNavRepository;
+
 
     @Autowired
     private MobileNavRepository repository;
@@ -46,4 +48,5 @@ public class MobileNavServiceImpl implements MobileNavService{
         return repository.findByNavIdIn(navIdList);
 
     }
+
 }

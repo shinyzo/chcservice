@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lming.chcservice.mapper.MobileNavMapper">
+
+    <resultMap id="navResultMap" type="com.lming.chcservice.model.MobileNav">
+        <result property="navId" column="nav_id" javaType="java.lang.String"/>
+        <result property="navName" column="nav_name" javaType="java.lang.String"/>
+        <result property="linkUrl" column="link_url" javaType="java.lang.String"/>
+        <result property="icon" column="icon" javaType="java.lang.String"/>
+        <result property="sort" column="sort" javaType="java.lang.Integer"/>
+    </resultMap>
+    <select id="findAll" parameterType="Integer" resultMap="navResultMap">
+        select * from mobile_nav
+    </select>
+</mapper>

@@ -10,5 +10,4 @@ public interface MobileNavService {
     public List<MobileNav> getNavByRoleId(Integer roleId);
 
 
-
 }

@@ -27,15 +27,15 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Controller
-@RequestMapping("/")
 @Slf4j
 public class IndexController {
 
 
-    @GetMapping(value = "/index")
-    public ModelAndView index(){
 
-        return new ModelAndView("index");
+    @RequestMapping(value = "/")
+    public String index(){
+
+        return "index";
     }
 
 }
