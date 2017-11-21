@@ -1,5 +1,7 @@
 package com.lming.chcservice.mapper;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lming.chcservice.entity.MobileNav;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -17,11 +19,21 @@ import java.util.List;
 public class MobileNavMapperTest {
     @Autowired
     private MobileNavMapper mapper;
+
     @Test
     public void findAll() throws Exception {
-      List<MobileNav> mobileNavList =   mapper.findAll();
-      log.info("导航列表："+mobileNavList);
-      Assert.assertNotEquals(0,mobileNavList);
+        List<MobileNav> mobileNavList = mapper.findAll();
+        log.info("导航列表：" + mobileNavList);
+        Assert.assertNotEquals(0, mobileNavList);
+    }
+
+    @Test
+    public void findByPage() {
+        PageHelper.startPage(2, 2);
+        List<MobileNav> mobileNavList = mapper.findAll();
+        log.info("mobileNav:{}", mobileNavList);
+        PageInfo<MobileNav> pageInfo = new PageInfo<>(mobileNavList);
+        log.info("{}", pageInfo);
     }
 
 }

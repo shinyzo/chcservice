@@ -6,10 +6,14 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
+
 @Entity
 @DynamicUpdate
 @Data
-public class DoctorInfo {
+public class DoctorInfo implements Serializable {
+
+
     /**
      * 主键id
      */

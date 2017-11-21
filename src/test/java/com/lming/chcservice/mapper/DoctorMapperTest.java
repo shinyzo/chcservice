@@ -1,12 +1,10 @@
 package com.lming.chcservice.mapper;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lming.chcservice.entity.DoctorInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +25,20 @@ public class DoctorMapperTest {
     @Test
     public void findAll() throws Exception {
         List<DoctorInfo> doctorInfoList = mapper.findAll(new HashMap<>());
+        log.info("doctorList:{}",doctorInfoList);
         Assert.assertNotEquals(0,doctorInfoList.size());
+    }
+
+    @Test
+    public void findBypage()throws  Exception{
+        Page<DoctorInfo> page = PageHelper.startPage(1,2); // 设置分页，参数1=页数，参数2=每页显示条数
+        List<DoctorInfo> doctorInfoList = mapper.findAll(new HashMap<>());
+        log.info("doctorList:{}",doctorInfoList);
+        log.info("page:{}",page);
+        PageInfo<DoctorInfo> pageInfo = new PageInfo<DoctorInfo>(doctorInfoList);
+        log.info("{}",pageInfo.getList());
+        Assert.assertNotEquals(0,pageInfo.getTotal());
+
     }
 
 

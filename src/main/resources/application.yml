@@ -45,3 +45,5 @@ projectUrl:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   typeAliasesPackage: com.lming.chcservice.entity
+  config-location: classpath:/config/mybatis-config.xml
+  check-config-location: true
