@@ -114,5 +114,9 @@ public class DoctorInfo {
      * 医师描述
      */
     private String desc;
+    /**
+     * 积分
+     */
+    private Float score;
 
 }

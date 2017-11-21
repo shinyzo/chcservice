@@ -7,4 +7,6 @@ public interface UserService {
     UserInfo findOne(String loginName, String loginPass);
 
     UserInfo findOne(String openid);
+
+    UserInfo findOne(Integer userId);
 }

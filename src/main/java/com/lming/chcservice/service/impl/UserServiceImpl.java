@@ -16,6 +16,11 @@ public class UserServiceImpl implements UserService {
     public UserInfo findOne(String loginName, String loginPass) {
         return repository.findByLoginNameAndLoginPass(loginName,loginPass);
     }
+    @Override
+    public UserInfo findOne(Integer userId)
+    {
+        return repository.findById(userId);
+    }
 
     @Override
     public UserInfo findOne(String openid) {

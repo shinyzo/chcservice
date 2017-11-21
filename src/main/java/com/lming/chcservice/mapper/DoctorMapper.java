@@ -9,7 +9,4 @@ public interface DoctorMapper {
 
     public List<DoctorInfo> findAll(Map<String, String> map);
 
-    public List<DoctorInfo> findByPage(Map<String, String> map, Page page);
-
-    public int getTotal(Map<String, String> map);
 }
