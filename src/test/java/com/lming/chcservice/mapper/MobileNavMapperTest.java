@@ -3,6 +3,7 @@ package com.lming.chcservice.mapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lming.chcservice.entity.MobileNav;
+import com.lming.chcservice.vo.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,6 +34,11 @@ public class MobileNavMapperTest {
         List<MobileNav> mobileNavList = mapper.findAll();
         log.info("mobileNav:{}", mobileNavList);
         PageInfo<MobileNav> pageInfo = new PageInfo<>(mobileNavList);
+        PageResult pageResult = new PageResult();
+        pageResult.setTotal(pageInfo.getTotal());
+        pageResult.setRows(mobileNavList);
+        log.info("pageResult:{}", pageResult);
+
         log.info("{}", pageInfo);
     }
 
