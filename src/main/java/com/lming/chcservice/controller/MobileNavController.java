@@ -5,8 +5,8 @@ import com.lming.chcservice.enums.PlatTypeEnum;
 import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.exception.ChcProcessException;
 import com.lming.chcservice.form.Form;
-import com.lming.chcservice.model.MobileNav;
-import com.lming.chcservice.model.UserInfo;
+import com.lming.chcservice.entity.MobileNav;
+import com.lming.chcservice.entity.UserInfo;
 import com.lming.chcservice.service.MobileNavService;
 import com.lming.chcservice.service.UserService;
 import com.lming.chcservice.util.ResultVOUtil;
@@ -45,8 +45,6 @@ public class MobileNavController {
 
     @GetMapping(value = "/list")
     public ResultVO list(@RequestParam("platType") String platType, Form form) {
-
-        log.info(form.getAppType());
         // 根据用户信息获取用户的导航
         PlatTypeEnum platTypeEnum = PlatTypeEnum.getPlatTypeEnum(platType);
         if (platTypeEnum == null) {

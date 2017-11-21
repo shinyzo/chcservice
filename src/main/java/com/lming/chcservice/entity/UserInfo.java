@@ -1,4 +1,4 @@
-package com.lming.chcservice.model;
+package com.lming.chcservice.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
@@ -33,6 +33,10 @@ public class UserInfo {
      * 用户姓名
      */
     private String userName;
+    /**
+     * 邮箱
+     */
+    private String email;
     /**
      * 出生年月日
      */

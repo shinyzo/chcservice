@@ -6,7 +6,7 @@ import com.lming.chcservice.constant.RedisConstant;
 import com.lming.chcservice.converter.UserInfo2UserInfoDTOConverter;
 import com.lming.chcservice.dto.UserInfoDTO;
 import com.lming.chcservice.enums.ResultEnum;
-import com.lming.chcservice.model.UserInfo;
+import com.lming.chcservice.entity.UserInfo;
 import com.lming.chcservice.service.UserService;
 import com.lming.chcservice.util.CookieUtil;
 import com.lming.chcservice.util.ResultVOUtil;
@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

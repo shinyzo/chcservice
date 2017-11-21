@@ -1,6 +1,6 @@
 package com.lming.chcservice.mapper;
 
-import com.lming.chcservice.model.MobileNav;
+import com.lming.chcservice.entity.MobileNav;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j

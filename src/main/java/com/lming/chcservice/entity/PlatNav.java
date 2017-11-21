@@ -1,7 +1,6 @@
-package com.lming.chcservice.model;
+package com.lming.chcservice.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

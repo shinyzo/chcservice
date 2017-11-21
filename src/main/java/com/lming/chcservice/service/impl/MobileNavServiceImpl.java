@@ -2,10 +2,8 @@ package com.lming.chcservice.service.impl;
 
 import com.lming.chcservice.dao.MobileNavRepository;
 import com.lming.chcservice.dao.PlatNavRepository;
-import com.lming.chcservice.enums.ResultEnum;
-import com.lming.chcservice.exception.ChcProcessException;
-import com.lming.chcservice.model.MobileNav;
-import com.lming.chcservice.model.PlatNav;
+import com.lming.chcservice.entity.MobileNav;
+import com.lming.chcservice.entity.PlatNav;
 import com.lming.chcservice.service.MobileNavService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

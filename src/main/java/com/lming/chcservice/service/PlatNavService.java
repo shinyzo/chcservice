@@ -1,6 +1,6 @@
 package com.lming.chcservice.service;
 
-import com.lming.chcservice.model.PlatNav;
+import com.lming.chcservice.entity.PlatNav;
 
 import java.util.List;
 

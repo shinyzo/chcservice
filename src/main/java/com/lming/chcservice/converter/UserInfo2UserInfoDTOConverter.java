@@ -1,7 +1,7 @@
 package com.lming.chcservice.converter;
 
 import com.lming.chcservice.dto.UserInfoDTO;
-import com.lming.chcservice.model.UserInfo;
+import com.lming.chcservice.entity.UserInfo;
 import org.springframework.beans.BeanUtils;
 
 public class UserInfo2UserInfoDTOConverter {

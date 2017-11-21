@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.Cacheable;
 @MapperScan(basePackages = "com.lming.chcservice.mapper")
 public class ChcserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ChcserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ChcserviceApplication.class, args);
+    }
 }

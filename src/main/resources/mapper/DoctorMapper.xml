@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lming.chcservice.mapper.DoctorMapper">
+
+    <resultMap id="doctorResultMap" type="DoctorInfo">
+        <id property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
+        <result property="userId" column="user_id" javaType="java.lang.Integer"/>
+        <result property="doctorName" column="doctor_name" javaType="java.lang.String"/>
+        <result property="sex" column="sex" javaType="java.lang.String"/>
+        <result property="birthday" column="birthday" javaType="java.lang.String"/>
+        <result property="idCardNo" column="id_card_no" javaType="java.lang.String"/>
+        <result property="avatar" column="avatar" javaType="java.lang.String"/>
+        <result property="qafcaCertNo" column="qafca_cert_no" javaType="java.lang.String"/>
+        <result property="qafcaCertImg" column="qafca_cert_img" javaType="java.lang.String"/>
+        <result property="qafcaCertSignDate" column="qafca_cert_sign_date" javaType="java.lang.String"/>
+        <result property="practCertNo" column="pract_cert_no" javaType="java.lang.String"/>
+        <result property="practCertImg" column="pract_certImg" javaType="java.lang.String"/>
+        <result property="practCertRegisterDate" column="pract_cert_register_date" javaType="java.lang.String"/>
+        <result property="workHospital" column="work_hospital" javaType="java.lang.String"/>
+        <result property="subject" column="subject" javaType="java.lang.String"/>
+        <result property="level" column="level" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="where_case">
+        <if test="subject != null and subject != ''">and subject = #{subject}</if>
+        <if test="doctorName != null and doctorName != ''">and doctor_name like "%"#{doctorName}"%"</if>
+        <if test="workHospital != null and workHospital != ''">and work_hospital = #{workHospital}</if>
+        <if test="level != null and level != ''">and level = #{level}</if>
+    </sql>
+
+    <!-- 排序 -->
+    <sql id="orderby">
+        <if test="orderField != null and orderSort != null ">order by <![CDATA[${orderField}]]> <![CDATA[${orderSort}]]></if>
+    </sql>
+
+    <select id="findAll" parameterType="java.util.HashMap" resultMap="doctorResultMap">
+        select * from doctorinfo where 1 = 1
+        <include refid="where_case"/>
+    </select>
+</mapper>

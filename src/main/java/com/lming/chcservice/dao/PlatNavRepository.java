@@ -1,6 +1,6 @@
 package com.lming.chcservice.dao;
 
-import com.lming.chcservice.model.PlatNav;
+import com.lming.chcservice.entity.PlatNav;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

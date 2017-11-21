@@ -1,7 +1,7 @@
 package com.lming.chcservice.service.impl;
 
 import com.lming.chcservice.dao.PlatNavRepository;
-import com.lming.chcservice.model.PlatNav;
+import com.lming.chcservice.entity.PlatNav;
 import com.lming.chcservice.service.PlatNavService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

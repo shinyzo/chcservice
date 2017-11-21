@@ -1,6 +1,6 @@
 package com.lming.chcservice.service;
 
-import com.lming.chcservice.model.MobileNav;
+import com.lming.chcservice.entity.MobileNav;
 
 import java.util.List;
 

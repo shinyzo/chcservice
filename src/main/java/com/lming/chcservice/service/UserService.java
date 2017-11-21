@@ -1,6 +1,6 @@
 package com.lming.chcservice.service;
 
-import com.lming.chcservice.model.UserInfo;
+import com.lming.chcservice.entity.UserInfo;
 
 public interface UserService {
 

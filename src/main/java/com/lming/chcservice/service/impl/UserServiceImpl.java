@@ -1,7 +1,7 @@
 package com.lming.chcservice.service.impl;
 
 import com.lming.chcservice.dao.UserInfoRepository;
-import com.lming.chcservice.model.UserInfo;
+import com.lming.chcservice.entity.UserInfo;
 import com.lming.chcservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
