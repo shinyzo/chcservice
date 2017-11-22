@@ -2,9 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lming.chcservice.mapper.DoctorMapper">
+<mapper namespace="com.lming.chcservice.mapper.ReserveMapper">
 
     <resultMap id="doctorReserveResultMap" type="Reserve">
+        <id property="reserveId" column="reserve_id" javaType="java.lang.String"/>
+        <result property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
+        <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date"/>
+        <result property="status" column="status" javaType="java.lang.String"/>
+        <result property="reserveTime" column="reserve_time" javaType="java.lang.String"/>
+        <result property="reserveDate" column="reserve_date" javaType="java.util.Date"/>
+        <result property="reserveAddress" column="reserve_address" javaType="java.lang.String"/>
+    </resultMap>
+
+    <resultMap id="reserveResultMap" type="Reserve">
         <id property="reserveId" column="reserve_id" javaType="java.lang.String"/>
         <result property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
         <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>

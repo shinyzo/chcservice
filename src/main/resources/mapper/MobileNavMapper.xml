@@ -11,7 +11,8 @@
         <result property="icon" column="icon" javaType="java.lang.String"/>
         <result property="sort" column="sort" javaType="java.lang.Integer"/>
     </resultMap>
-    <select id="findAll" parameterType="Integer" resultMap="navResultMap">
+
+    <select id="findAll" resultMap="navResultMap">
         select * from mobile_nav
     </select>
 </mapper>

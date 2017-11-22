@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
@@ -28,10 +29,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public PageInfo<DoctorInfo> findByPage(int pageNum, int pageSize) {
+    public PageInfo<DoctorInfo> findByPage(Integer pageNum, Integer pageSize, Map<String, String> paramsMap) {
         PageHelper.startPage(pageNum, pageSize);
-        List<DoctorInfo> doctorInfos = mapper.findAll(new HashMap<>());
+        List<DoctorInfo> doctorInfos = mapper.findAll(paramsMap);
         PageInfo<DoctorInfo> pageInfo = new PageInfo<>(doctorInfos);
         return pageInfo;
+
     }
 }

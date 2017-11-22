@@ -1,5 +1,6 @@
 package com.lming.chcservice.mapper;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lming.chcservice.entity.MobileNav;
@@ -30,16 +31,16 @@ public class MobileNavMapperTest {
 
     @Test
     public void findByPage() {
-        PageHelper.startPage(2, 2);
+        PageHelper.startPage(1, 2);
         List<MobileNav> mobileNavList = mapper.findAll();
-        log.info("mobileNav:{}", mobileNavList);
+        for(int i=0;i<mobileNavList.size();i++)
+        {
+            log.info(mobileNavList.get(i).getNavId());
+            log.info(mobileNavList.get(i).getNavName());
+        }
+        System.out.print(mobileNavList);
         PageInfo<MobileNav> pageInfo = new PageInfo<>(mobileNavList);
-        PageResult pageResult = new PageResult();
-        pageResult.setTotal(pageInfo.getTotal());
-        pageResult.setRows(mobileNavList);
-        log.info("pageResult:{}", pageResult);
-
-        log.info("{}", pageInfo);
+        log.info("共{}页，当前页{}，下一页{},总记录{}",pageInfo.getPages(),pageInfo.getNavigatePages(),pageInfo.getNextPage(),pageInfo.getTotal());
     }
 
 }

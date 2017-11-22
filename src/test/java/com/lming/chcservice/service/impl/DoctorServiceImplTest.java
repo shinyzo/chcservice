@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -22,9 +24,7 @@ public class DoctorServiceImplTest {
 
     @Test
     public void findByPage() {
-        PageInfo<DoctorInfo> pageInfo = doctorService.findByPage(1, 2);
-        log.info("pageInfo:{}",pageInfo);
-        Assert.assertNotEquals(0,pageInfo.getList());
+
     }
 
 }
