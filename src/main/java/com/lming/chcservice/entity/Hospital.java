@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -17,7 +18,8 @@ public class Hospital {
      * 医院id
      */
     @Id
-    private String hospitalId;
+    @GeneratedValue
+    private Integer hospitalId;
     /**
      * 医院名称
      */

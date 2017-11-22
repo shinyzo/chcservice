@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lming.chcservice.mapper.DoctorMapper">
+
+    <resultMap id="doctorReserveResultMap" type="Reserve">
+        <id property="reserveId" column="reserve_id" javaType="java.lang.String"/>
+        <result property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
+        <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date"/>
+        <result property="status" column="status" javaType="java.lang.String"/>
+        <result property="reserveTime" column="reserve_time" javaType="java.lang.String"/>
+        <result property="reserveDate" column="reserve_date" javaType="java.util.Date"/>
+        <result property="reserveAddress" column="reserve_address" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="where_case">
+        <if test="reserveId != null and reserveId != 0">and r.reserve_id = #{reserveId}</if>
+        <if test="status != null and status != ''">and r.status = #{status}</if>
+        <if test="reserveDate != null">and r.reserve_date = #{reserveDate}</if>
+    </sql>
+
+    <!-- 排序 -->
+    <sql id="orderby">
+        <if test="orderField != null and orderSort != null ">order by <![CDATA[${orderField}]]> <![CDATA[${orderSort}]]></if>
+    </sql>
+
+    <!-- 患者预约 -->
+    <select id="findAllByFromUserId" parameterType="java.util.HashMap" resultMap="reserveResultMap">
+        select
+             r.*,d.*
+        from
+              reserve r
+        left join doctor_info d on r.doctor_id = d.doctor_id
+
+        where from_userid = #{fromUserId}
+
+        <include refid="where_case"/>
+    </select>
+
+    <select id="findAllByDoctorId" parameterType="java.util.HashMap" resultMap="doctorReserveResultMap">
+        select
+            r.*,u.*
+        from
+            reserve r
+        left join user_info u on r.from_userid = u.id
+        where r.doctor_id = #{doctorId}
+        <include refid="where_case"/>
+    </select>
+
+</mapper>

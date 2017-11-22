@@ -69,9 +69,9 @@ public class DoctorInfo implements Serializable {
      */
     private String practCertRegisterDate;
     /**
-     * 就职医院
+     * 医院id
      */
-    private String workHospital;
+    private Integer hospitalId;
     /**
      * 科室Id
      */

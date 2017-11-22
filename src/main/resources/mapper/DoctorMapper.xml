@@ -26,7 +26,7 @@
     <sql id="where_case">
         <if test="subject != null and subject != ''">and subject = #{subject}</if>
         <if test="doctorName != null and doctorName != ''">and doctor_name like "%"#{doctorName}"%"</if>
-        <if test="workHospital != null and workHospital != ''">and work_hospital = #{workHospital}</if>
+        <if test="hospital_id != null and hospital_id != ''">and hospital_id = #{hospitalId}</if>
         <if test="level != null and level != ''">and level = #{level}</if>
     </sql>
 
@@ -36,7 +36,15 @@
     </sql>
 
     <select id="findAll" parameterType="java.util.HashMap" resultMap="doctorResultMap">
-        select * from doctor_info where 1 = 1
+        select
+              d.*,s.subject_name,l.level_name,h.hospital_name,u.id
+        from
+              doctor_info d
+        left join subject s on d.subject_id = s.subject_id
+        left join doctor_level l on d.level_id = l.level_id
+        left join hospital h on d.hospital_id = h.hospital_id
+        left join user_info u on d.user_id = u.id
+        where 1 = 1
         <include refid="where_case"/>
     </select>
 

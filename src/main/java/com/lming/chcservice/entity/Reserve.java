@@ -25,6 +25,10 @@ public class Reserve {
      */
     private Integer toUserId;
     /**
+     * 医师id
+     */
+    private Integer doctorId;
+    /**
      * 状态
      * 0：预约中
      * 1：预约成功
