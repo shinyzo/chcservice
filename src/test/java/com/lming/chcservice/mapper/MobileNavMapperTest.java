@@ -41,6 +41,7 @@ public class MobileNavMapperTest {
         System.out.print(mobileNavList);
         PageInfo<MobileNav> pageInfo = new PageInfo<>(mobileNavList);
         log.info("共{}页，当前页{}，下一页{},总记录{}",pageInfo.getPages(),pageInfo.getNavigatePages(),pageInfo.getNextPage(),pageInfo.getTotal());
+        Assert.assertNotEquals(0,mobileNavList.size());
     }
 
 }
