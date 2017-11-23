@@ -29,6 +29,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO findByReserveId(String reserveId) {
-        return null;
+        return mapper.findByReserveId(reserveId);
     }
 }

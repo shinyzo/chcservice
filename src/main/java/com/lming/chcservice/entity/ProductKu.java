@@ -25,6 +25,10 @@ public class ProductKu {
      */
     private String categoryId;
     /**
+     * 类别名称
+     */
+    private String categoryName;
+    /**
      * 产品条码
      */
     private String productCode;
@@ -44,5 +48,11 @@ public class ProductKu {
      * 产品对应积分
      */
     private Float score;
+    /**
+     * 产品状态 是否展示
+     * 0：展示
+     * 1：不展示
+     */
+    private String status;
 
 }

@@ -22,6 +22,9 @@ public class OrderServiceImplTest {
 
     @Test
     public void findByReserveId() throws Exception {
+        String reserveId = "1";
+        OrderDTO orderDTO = orderService.findByReserveId(reserveId);
+        log.info("orderDTO:{}", orderDTO);
     }
 
     @Test
@@ -33,6 +36,11 @@ public class OrderServiceImplTest {
 
     @Test
     public void findByDoctorId() throws Exception {
+
+        Integer doctorId = 1;
+        List<OrderDTO> orderDTOList = orderService.findByDoctorId(doctorId);
+        log.info("orderDTO:{}", orderDTOList);
+
     }
 
     @Test
