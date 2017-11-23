@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lming.chcservice.mapper.OrderMapper">
+
+    <resultMap id="orderResultMap" type="com.lming.chcservice.dto.OrderDTO">
+        <id property="orderId" column="order_id" javaType="java.lang.String"/>
+        <result property="reserveId" column="reserve_id" javaType="java.lang.String"/>
+        <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>
+        <result property="toUserId" column="to_userid" javaType="java.lang.Integer"/>
+        <result property="conditionDescription" column="condition_description" javaType="java.lang.String"/>
+        <result property="diagnosisOpinion" column="diagnosis_opinion" javaType="java.lang.String"/>
+        <result property="attachment" column="attachment" javaType="java.lang.String"/>
+        <result property="signName" column="signname" javaType="java.lang.String"/>
+        <result property="orderAmt" column="orderAmt" javaType="java.math.BigDecimal"/>
+        <result property="orderStatus" column="order_status" javaType="java.lang.String"/>
+        <result property="payStatus" column="pay_status" javaType="java.lang.String"/>
+        <result property="nextId" column="next_id" javaType="java.lang.String"/>
+
+        <!-- property表示集合类型属性名称，ofType表示集合中的对象是什么类型 -->
+        <collection  property="orderDetailList" column="order_id"  ofType="com.lming.chcservice.entity.OrderDetail">
+            <id property="detailId" column="detail_id" javaType="java.lang.String"/>
+            <result property="orderId" column="order_id" javaType="java.lang.String"/>
+            <result property="productId" column="product_id" javaType="java.lang.String"/>
+            <result property="productName" column="product_name" javaType="java.lang.String"/>
+            <result property="categoryId" column="category_id" javaType="java.lang.String"/>
+            <result property="count" column="count" javaType="java.lang.Integer"/>
+            <result property="price" column="price" javaType="java.math.BigDecimal"/>
+            <result property="totalPrice" column="total_price" javaType="java.math.BigDecimal"/>
+        </collection>
+
+
+    </resultMap>
+
+    <sql id="where_case">
+        <if test="doctorId != null and doctorId != 0">and d.doctor_id = #{doctorId}</if>
+        <if test="subjectId != null and subjectId != ''">and d.subject_id = #{subjectId}</if>
+        <if test="levelId != null and levelId != 0">and d.level_id = #{levelId}</if>
+        <if test="hospitalId != null and hospitalId != 0">and d.hospital_id = #{hospitalId}</if>
+        <if test="doctorName != null and doctorName != ''">and d.doctor_name like "%"#{doctorName}"%"</if>
+    </sql>
+
+    <!-- 排序 -->
+    <sql id="orderby">
+        <if test="orderField != null and orderSort != null ">order by <![CDATA[${orderField}]]>
+            <![CDATA[${orderSort}]]></if>
+    </sql>
+
+    <select id="findByOrderId" parameterType="java.lang.String" resultMap="orderResultMap">
+       select
+              *
+        from
+            order_master m
+        left join order_detail d on m.order_id = d.order_id
+        where m.order_id = #{orderId}
+    </select>
+
+    <select id="findByFromUserId" parameterType="java.lang.Integer" resultMap="orderResultMap">
+        select
+            m.*,d.*
+        from
+          order_master m
+        left join order_detail d on m.order_id = d.order_id
+        where m.from_userid = #{fromUserId}
+    </select>
+
+    <select id="findByDoctorId" parameterType="java.lang.Integer" resultMap="orderResultMap">
+        select
+        *
+        from
+        order_master m
+        left join order_detail d on m.order_id = d.order_id
+        where m.doctor_id = #{doctorId}
+    </select>
+
+    <select id="findByReserveId" parameterType="java.lang.String" resultMap="orderResultMap">
+        select
+        *
+        from
+        order_master m
+        left join order_detail d on m.order_id = d.order_id
+        where m.reserve_id = #{reserveId}
+    </select>
+
+
+
+</mapper>
