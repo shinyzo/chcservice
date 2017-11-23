@@ -33,10 +33,8 @@ public class ChcAuthorizeAspect {
     /**
      * 切入点 indexController和LoginController除外其他的所有Controller的方法及参数类型
      */
-    @Pointcut("execution(public * com.lming.chcservice.controller.*.*(..))"
-            + "&& !execution(public * com.lming.chcservice.controller.LoginController.*(..))"
-            + "&& !execution(public * com.lming.chcservice.controller.IndexController.*(..))"
-            + "&& !execution(public * com.lming.chcservice.controller.MobileNavController.*(..))"
+    @Pointcut("execution(public * com.lming.chcservice.controller.OrderController.*(..))"
+            + "&& execution(public * com.lming.chcservice.controller.ReserveController.*(..))"
     )
     public void verify(){};
 

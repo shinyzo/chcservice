@@ -1,10 +1,15 @@
-package com.lming.chcservice.mapper;
+package com.lming.chcservice.service;
 
 import com.lming.chcservice.entity.ReserveEntity;
 
 import java.util.List;
 
-public interface ReserveMapper {
+/**
+ * @Author shinyZo
+ * @date 2017-11-23
+ * @description
+ */
+public interface ReserveService {
 
     /**
      * 患者-我的预约

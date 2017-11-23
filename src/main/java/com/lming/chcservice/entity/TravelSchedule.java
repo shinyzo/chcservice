@@ -25,6 +25,10 @@ public class TravelSchedule {
      */
     private Integer userId;
     /**
+     * 医生id
+     */
+    private Integer doctorId;
+    /**
      * 业务日期
      */
     private Date businessDate;

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/nav")
+@RequestMapping(value = "/api/v1")
 @Slf4j
 public class MobileNavController {
 
@@ -42,9 +42,13 @@ public class MobileNavController {
         return ResultVOUtil.success(mobileNavList);
     }
 
-
-    @GetMapping(value = "/list")
-    public ResultVO list(@RequestParam("platType") String platType, Form form) {
+    /**
+     * RestFul Api
+     * @param platType
+     * @return
+     */
+    @GetMapping(value = "/navs/{id}")
+    public ResultVO list(@PathVariable("id") String platType) {
         // 根据用户信息获取用户的导航
         PlatTypeEnum platTypeEnum = PlatTypeEnum.getPlatTypeEnum(platType);
         if (platTypeEnum == null) {
@@ -55,4 +59,16 @@ public class MobileNavController {
         return ResultVOUtil.success(mobileNavList);
     }
 
+
+    @GetMapping(value = "/navs")
+    public ResultVO findList(@RequestParam("platType") String platType) {
+        // 根据用户信息获取用户的导航
+        PlatTypeEnum platTypeEnum = PlatTypeEnum.getPlatTypeEnum(platType);
+        if (platTypeEnum == null) {
+            throw new ChcProcessException(ResultEnum.APP_TYPE_ERROR);
+        }
+        List<MobileNav> mobileNavList = mobileNavService.getNavByPlatType(platTypeEnum.toString());
+        log.info("【导航列表】 -获取用户导航列表，navList={}", mobileNavList);
+        return ResultVOUtil.success(mobileNavList);
+    }
 }

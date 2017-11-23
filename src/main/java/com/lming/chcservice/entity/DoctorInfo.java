@@ -73,13 +73,25 @@ public class DoctorInfo implements Serializable {
      */
     private Integer hospitalId;
     /**
+     * 医院名称
+     */
+    private String hospitalName;
+    /**
      * 科室Id
      */
     private String subjectId;
     /**
+     * 科室名称
+     */
+    private String subjectName;
+    /**
      * 医师级别Id
      */
-    private String doctorLevel;
+    private Integer levelId;
+    /**
+     * 级别名称
+     */
+    private String levelName;
     /**
      * 医师编号
      */

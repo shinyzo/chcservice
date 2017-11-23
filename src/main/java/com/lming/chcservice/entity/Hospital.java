@@ -39,6 +39,14 @@ public class Hospital {
      */
     private String address;
     /**
+     * 经度
+     */
+    private String lat;
+    /**
+     * 纬度
+     */
+    private String lng;
+    /**
      * 电话
      */
     private String telnum;

@@ -7,8 +7,9 @@ spring:
   jpa:
     hibernate:
       show-sql: true
-  jackson:
-    default-property-inclusion: non_null
+  # null数据不返回json
+  #jackson:
+    #default-property-inclusion: non_null
   redis:
     host: localhost
     port: 6379

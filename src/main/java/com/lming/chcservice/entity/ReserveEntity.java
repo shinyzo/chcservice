@@ -1,16 +1,18 @@
 package com.lming.chcservice.entity;
 
 import lombok.Data;
+import org.springframework.dao.DataAccessException;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 预约
  */
 @Entity
 @Data
-public class Reserve {
+public class ReserveEntity {
     /**
      * 预约号
      */
@@ -42,7 +44,7 @@ public class Reserve {
     /**
      * 预约日期
      */
-    private String reserveDate;
+    private Date reserveDate;
     /**
      * 预约地点
      */

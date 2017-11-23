@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lming.chcservice.mapper.ReserveMapper">
 
-    <resultMap id="doctorReserveResultMap" type="Reserve">
+    <resultMap id="doctorReserveResultMap" type="ReserveEntity">
         <id property="reserveId" column="reserve_id" javaType="java.lang.String"/>
         <result property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
         <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>
@@ -15,7 +15,7 @@
         <result property="reserveAddress" column="reserve_address" javaType="java.lang.String"/>
     </resultMap>
 
-    <resultMap id="reserveResultMap" type="Reserve">
+    <resultMap id="reserveResultMap" type="ReserveEntity">
         <id property="reserveId" column="reserve_id" javaType="java.lang.String"/>
         <result property="doctorId" column="doctor_id" javaType="java.lang.Integer"/>
         <result property="fromUserId" column="from_userid" javaType="java.lang.Integer"/>
@@ -45,7 +45,7 @@
               reserve r
         left join doctor_info d on r.doctor_id = d.doctor_id
 
-        where from_userid = #{fromUserId}
+        where r.from_userid = #{fromUserId}
 
         <include refid="where_case"/>
     </select>

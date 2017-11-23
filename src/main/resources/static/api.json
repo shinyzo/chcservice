@@ -1,0 +1,230 @@
+// http://localhost/chcservice/api/v1/subjects
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "subjectId": "S000001",
+      "subjectName": "骨科"
+    },
+    {
+      "subjectId": "S000002",
+      "subjectName": "儿科"
+    },
+    {
+      "subjectId": "S000003",
+      "subjectName": "妇科"
+    },
+    {
+      "subjectId": "S000004",
+      "subjectName": "脑外科"
+    },
+    {
+      "subjectId": "S000005",
+      "subjectName": "肿瘤科"
+    },
+    {
+      "subjectId": "S000006",
+      "subjectName": "皮肤科"
+    },
+    {
+      "subjectId": "S000007",
+      "subjectName": "心外科"
+    },
+    {
+      "subjectId": "S000008",
+      "subjectName": "放射科"
+    }
+  ]
+}
+
+// http://localhost/chcservice/api/v1/doctor/levels
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "levelId": 1,
+      "levelName": "专家"
+    },
+    {
+      "levelId": 2,
+      "levelName": "主任医师"
+    },
+    {
+      "levelId": 3,
+      "levelName": "副主任医师"
+    },
+    {
+      "levelId": 4,
+      "levelName": "医师"
+    },
+    {
+      "levelId": 5,
+      "levelName": "助理"
+    },
+    {
+      "levelId": 6,
+      "levelName": "实习医师"
+    }
+  ]
+}
+
+// http://localhost/chcservice/api/v1/hospitals
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "hospitalId": 1,
+      "hospitalName": "海南省人民医院",
+      "hospitalType": "三级甲等",
+      "hospitalLevel": "1",
+      "address": "海南省人民医院",
+      "telnum": "0898-222222"
+    },
+    {
+      "hospitalId": 2,
+      "hospitalName": "海南省中医院",
+      "hospitalType": "三级甲等",
+      "hospitalLevel": "2",
+      "address": "海南省中医院",
+      "telnum": "0898-333333"
+    }
+  ]
+}
+
+// http://localhost/chcservice/api/v1/navs/P
+// http://localhost/chcservice/api/v1/navs?platType=P
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "navId": "N000001",
+      "navName": "首页",
+      "linkUrl": "/index",
+      "icon": "icon-home",
+      "sort": 1
+    },
+    {
+      "navId": "N000002",
+      "navName": "预约",
+      "linkUrl": "/doctor",
+      "icon": "icon-bubbles4",
+      "sort": 2
+    },
+    {
+      "navId": "N000003",
+      "navName": "诊单",
+      "linkUrl": "/order",
+      "icon": "icon-stack",
+      "sort": 3
+    },
+    {
+      "navId": "N000004",
+      "navName": "个人中心",
+      "linkUrl": "/owner",
+      "icon": "icon-compass2",
+      "sort": 4
+    }
+  ]
+}
+
+// http://localhost/chcservice/api/v1/doctors
+
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "doctorId": 1,
+      "userId": 1,
+      "doctorName": "张医师",
+      "sex": "男",
+      "birthday": "1988-09-20",
+      "idCardNo": "360622198809201536",
+      "qafcaCertNo": "A3423432432423",
+      "qafcaCertSignDate": "2017-09-20",
+      "practCertNo": "1232132132",
+      "practCertRegisterDate": "2017-09-20",
+      "hospitalId": 1,
+      "hospitalName": "海南省人民医院",
+      "subjectId": "2",
+      "levelId": 1,
+      "levelName": "专家",
+      "status": "0",
+      "score": 0.0
+    },
+    {
+      "doctorId": 2,
+      "userId": 2,
+      "doctorName": "李医师",
+      "sex": "女 ",
+      "birthday": "1985-07-11",
+      "idCardNo": "360622198809201532",
+      "qafcaCertNo": "22312321321",
+      "qafcaCertSignDate": "2017-09-20",
+      "practCertNo": "1232132132",
+      "practCertRegisterDate": "2017-09-20",
+      "hospitalId": 1,
+      "hospitalName": "海南省人民医院",
+      "subjectId": "2",
+      "levelId": 3,
+      "levelName": "副主任医师",
+      "fav_subject": "眼科",
+      "status": "0",
+      "desc": "32132132132132132",
+      "score": 0.0
+    }
+  ]
+}
+
+
+// http://localhost/chcservice/api/v1/doctors?hospitalId=1
+{
+  "code": "0",
+  "msg": "成功",
+  "data": [
+    {
+      "doctorId": 1,
+      "userId": 1,
+      "doctorName": "张医师",
+      "sex": "男",
+      "birthday": "1988-09-20",
+      "idCardNo": "360622198809201536",
+      "qafcaCertNo": "A3423432432423",
+      "qafcaCertSignDate": "2017-09-20",
+      "practCertNo": "1232132132",
+      "practCertRegisterDate": "2017-09-20",
+      "hospitalId": 1,
+      "hospitalName": "海南省人民医院",
+      "subjectId": "2",
+      "levelId": 1,
+      "levelName": "专家",
+      "status": "0",
+      "score": 0.0
+    },
+    {
+      "doctorId": 2,
+      "userId": 2,
+      "doctorName": "李医师",
+      "sex": "女 ",
+      "birthday": "1985-07-11",
+      "idCardNo": "360622198809201532",
+      "qafcaCertNo": "22312321321",
+      "qafcaCertSignDate": "2017-09-20",
+      "practCertNo": "1232132132",
+      "practCertRegisterDate": "2017-09-20",
+      "hospitalId": 1,
+      "hospitalName": "海南省人民医院",
+      "subjectId": "2",
+      "levelId": 3,
+      "levelName": "副主任医师",
+      "fav_subject": "眼科",
+      "status": "0",
+      "desc": "32132132132132132",
+      "score": 0.0
+    }
+  ]
+}

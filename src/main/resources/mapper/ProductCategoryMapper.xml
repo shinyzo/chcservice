@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lming.chcservice.mapper.ProductCategoryMapper">
+
+    <sql id="where_case">
+        <if test="parentId != null and parentId != 0">and parent_id = #{parentId}</if>
+    </sql>
+
+    <!-- 排序 -->
+    <sql id="orderby">
+        <if test="orderField != null and orderSort != null ">order by <![CDATA[${orderField}]]> <![CDATA[${orderSort}]]></if>
+    </sql>
+
+    <select id="findAll" parameterType="java.util.HashMap" resultType="ProductCategory">
+        select * from product_category where 1 = 1
+        <include refid="where_case" />
+    </select>
+
+
+</mapper>

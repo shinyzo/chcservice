@@ -24,7 +24,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping(value = "/api/user")
+@RequestMapping(value = "/api/v1")
 @Slf4j
 public class LoginController {
 
