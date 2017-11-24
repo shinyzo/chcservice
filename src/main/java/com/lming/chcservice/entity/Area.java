@@ -2,31 +2,28 @@ package com.lming.chcservice.entity;
 
 import lombok.Data;
 
+import javax.jnlp.IntegrationService;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * 城市编码
+ * 区域县级编码
+ * @Author shinyZo
+ * @date 2017-11-24
+ * @description
  */
 @Entity
 @Data
-public class City {
-
+public class Area {
     @Id
     @GeneratedValue
     private Integer id;
-    /**
-     * 城市Id
-     */
+
+    private String areaId;
+
+    private String areaName;
+
     private String cityId;
-    /**
-     * 城市名称
-     */
-    private String cityName;
-    /**
-     * 父级城市id
-     */
-    private String provinceId;
 
 }

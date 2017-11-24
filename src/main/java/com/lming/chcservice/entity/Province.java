@@ -7,26 +7,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * 城市编码
+ * 省份编码
+ * @Author shinyZo
+ * @date 2017-11-24
+ * @description
  */
 @Entity
 @Data
-public class City {
-
+public class Province {
     @Id
     @GeneratedValue
     private Integer id;
-    /**
-     * 城市Id
-     */
-    private String cityId;
-    /**
-     * 城市名称
-     */
-    private String cityName;
-    /**
-     * 父级城市id
-     */
+
     private String provinceId;
 
+    private String provinceName;
 }

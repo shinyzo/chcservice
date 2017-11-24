@@ -49,7 +49,7 @@ public class LoginController {
         String token = UUID.randomUUID().toString();
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
                 userInfo.getOpenid(),
-                RedisConstant.EXPIRE_TIME,
+                RedisConstant.TOKEN_EXPIRE_TIME,
                 TimeUnit.SECONDS);
         // 设置token至Cookie
         CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE_TIME);

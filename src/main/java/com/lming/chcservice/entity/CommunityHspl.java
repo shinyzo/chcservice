@@ -29,7 +29,11 @@ public class CommunityHspl {
     /**
      * 营业时间
      */
-    private String workTime;
+    private String workBegintime;
+    /**
+     * 结束时间
+     */
+    private String workEndtime;
     /**
      * 营业执照号
      */
@@ -42,6 +46,10 @@ public class CommunityHspl {
      * 身份证号
      */
     private String idCardNo;
+    /**
+     * 城市
+     */
+    private String cityId;
     /**
      * 社区医院地址
      */
