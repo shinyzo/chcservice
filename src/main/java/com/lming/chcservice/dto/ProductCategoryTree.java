@@ -1,8 +1,7 @@
 package com.lming.chcservice.dto;
 
+import com.lming.chcservice.util.menutree.TreeAbstr;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * 产品分类树形结构
@@ -12,28 +11,19 @@ import java.util.List;
  * @description
  */
 @Data
-public class ProductCategoryTree {
-
-    private String categoryId;
-    /**
-     * 分类名称
-     */
-    private String categoryName;
+public class ProductCategoryTree extends TreeAbstr {
     /**
      * 图标
      */
     private String icon;
     /**
-     * 父节点
+     * 状态
      */
-    private String parentId;
-    /**
-     * 是否有子节点
-     */
-    private boolean hasChildren;
-    /**
-     * 子节点集合
-     */
-    private List<ProductCategoryTree> children;
+    private String status;
 
+    public ProductCategoryTree(String nodeId, String nodeName, String parentId, String icon, String status) {
+        super(nodeId, nodeName, parentId);
+        this.icon = icon;
+        this.status = status;
+    }
 }

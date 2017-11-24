@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50168
 File Encoding         : 65001
 
-Date: 2017-11-21 17:28:42
+Date: 2017-11-24 13:07:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,12 +56,8 @@ CREATE TABLE `corp_info` (
 -- ----------------------------
 -- Records of corp_info
 -- ----------------------------
-INSERT INTO `corp_info` VALUES ('48', 'HNLS', '海南联顺食品有限公司', '654215648951', '<a>11</a>', '360622198802153477', '400-899-544', 'FYH_WEB.png', null, null, '海南银行总部大楼', null, '0000', '1', null);
-INSERT INTO `corp_info` VALUES ('51', 'HNNX', '海南HNNX科技有限公司', '444444', '11111', '360612345454656', '400-705-1111', 'FYH_WEB.png', null, null, '蓝天路金棕苑C#1108', null, '0000', '1', '');
 INSERT INTO `corp_info` VALUES ('69', '0000', '企萌科技-后台管理系统', null, null, '360622198809201536', '15501700742', null, null, null, null, null, '0001', '0', null);
-INSERT INTO `corp_info` VALUES ('71', 'YXWC', '武汉银信网创科技有限公司', '11222121221', '李范德萨', '360622545624154565', '15501700742', null, null, null, '652145525536666', null, '0003', '1', null);
 INSERT INTO `corp_info` VALUES ('72', 'H000001', '海南裕兴昌药业股份有限公司', '11111111', '邓总', '360622198809201534', '15644337766', null, null, null, '', null, '0005', '0', null);
-INSERT INTO `corp_info` VALUES ('73', 'HSY', '海南恒思远有限公司', '111111111111111', '王慧如', '343545454443434', '', null, null, null, '', null, '0000', '1', null);
 INSERT INTO `corp_info` VALUES ('74', 'BGT', '海南百广堂药业有限公司', '11111111111', '小白', '345645654454323', '15501700733', null, null, null, '', null, '0000', '0', null);
 INSERT INTO `corp_info` VALUES ('75', 'SQYY', '社区医院（）', '111111111', '张三', '353323434332232', '15678988765', null, null, null, '111111', null, '0005', '0', null);
 
@@ -83,9 +79,12 @@ CREATE TABLE `doctor_info` (
   `pract_cert_no` varchar(20) NOT NULL COMMENT '执业资格证书',
   `pract_cert_img` varchar(100) DEFAULT NULL COMMENT '执业资格证书图片',
   `pract_cert_register_date` varchar(20) DEFAULT NULL COMMENT '执业资格证书注册日期',
-  `work_hospital` varchar(100) DEFAULT NULL COMMENT '医院',
+  `hospital_id` int(11) DEFAULT NULL COMMENT '医院',
+  `hospital_name` varchar(100) DEFAULT NULL,
   `subject_id` varchar(20) DEFAULT NULL COMMENT '科室',
+  `subject_name` varchar(40) DEFAULT NULL,
   `level_id` varchar(40) DEFAULT NULL COMMENT '职务级别',
+  `level_name` varchar(40) DEFAULT NULL,
   `doctor_no` varchar(40) DEFAULT NULL COMMENT '医师编号',
   `college_name` varchar(100) DEFAULT NULL COMMENT '大学名称',
   `work_age` varchar(3) DEFAULT NULL COMMENT '工作年限',
@@ -95,6 +94,7 @@ CREATE TABLE `doctor_info` (
   `status` varchar(4) DEFAULT NULL COMMENT '状态',
   `input_type` varchar(1) DEFAULT '1' COMMENT '数据录入方式1：内部录入，0：个人注册',
   `desc` varchar(1000) DEFAULT NULL COMMENT '医师简介',
+  `score` float(11,2) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL,
   `update_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`doctor_id`,`id_card_no`)
@@ -103,12 +103,8 @@ CREATE TABLE `doctor_info` (
 -- ----------------------------
 -- Records of doctor_info
 -- ----------------------------
-INSERT INTO `doctor_info` VALUES ('1', '1', '张三', '男', '1988-09-20', '360622198809201536', null, 'A3423432432423', null, '2017-09-20', '1232132132', null, '2017-09-20', null, '脑外科', null, null, null, null, null, null, null, null, '1', null, null, null);
-INSERT INTO `doctor_info` VALUES ('2', '2', '张三理发师的头', '男', '1988-09-20', '3634324324324333', null, '22312321321', null, '2017-09-20', '1232132132', null, '2017-09-20', '海口市中医院', '眼科', '专家', null, null, '4', '眼科', '2321321321', '1111111', null, '1', '32132132132132132', null, null);
-INSERT INTO `doctor_info` VALUES ('3', '3', '张三', '男', '1988-09-20', '360622198809201536', '111111_face.png', 'q1243435444', '111111_qafca.png', '2017-09-12', 'r1q2w3e4r4556yy6u', '111111_pract.png', '2017-09-05', '海口市中医院', '眼科', '专家', null, null, '4', '脑科,骨科', '021-7778776', '15501700742', '1', '1', 'yyyyyyyyyyyyyyyyyyyyy', null, null);
-INSERT INTO `doctor_info` VALUES ('4', '4', '李四光', '男', '1988-09-20', '3245630099123411', '111111_face.png', 'w2e3r4t5', '111111_qafca.png', '2017-09-19', 'r4t5yt6u7i8o90p', '111111_pract.png', '2017-09-21', '海口市中医院', '眼科', '专家', null, null, '2', '眼科,脑科,骨科', '', '15501700743', '1', '1', '44444444444444444444', '2017-09-20 14:54:31', null);
-INSERT INTO `doctor_info` VALUES ('5', '5', '发大财', '男', '1988-09-20', '9876556565444777', '111111_face.png', 'erer345666', '111111_qafca.png', '2017-09-19', '87655444', '111111_pract.png', '2017-09-20', '海口市中医院', '眼科', '专家', '66666', '华东交通大学理工学院', '4', '脑科,骨科', '222', '677676767', '1', '1', 'iuyygghhh', '2017-09-20 15:43:07', null);
-INSERT INTO `doctor_info` VALUES ('6', '6', '发大财', '男', '1988-09-20', '9876556565444777', '201709201637461925_face.png', 'erer345666', '201709201637469816_qafca.png', '2017-09-19', '87655444', '201709201637468146_pract.png', '2017-09-20', '海口市中医院', '眼科', '专家', '66666', '华东交通大学理工学院', '4', '脑科,骨科', '222', '677676767', '1', '1', 'iuyygghhh', '2017-09-20 16:37:46', null);
+INSERT INTO `doctor_info` VALUES ('1', '1', '张医师', '男', '1988-09-20', '360622198809201536', null, 'A3423432432423', null, '2017-09-20', '1232132132', null, '2017-09-20', '1', null, '2', null, '1', null, null, null, '2', null, null, null, '0', '1', null, '0.00', null, null);
+INSERT INTO `doctor_info` VALUES ('2', '2', '李医师', '女 ', '1985-07-11', '360622198809201532', null, '22312321321', null, '2017-09-20', '1232132132', null, '2017-09-20', '1', null, '2', null, '3', null, null, null, '4', '眼科', '2321321321', '1111111', '0', '1', '32132132132132132', '0.00', null, null);
 
 -- ----------------------------
 -- Table structure for `doctor_level`
@@ -118,29 +114,39 @@ CREATE TABLE `doctor_level` (
   `level_id` int(10) NOT NULL AUTO_INCREMENT,
   `level_name` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`level_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of doctor_level
 -- ----------------------------
+INSERT INTO `doctor_level` VALUES ('1', '专家');
+INSERT INTO `doctor_level` VALUES ('2', '主任医师');
+INSERT INTO `doctor_level` VALUES ('3', '副主任医师');
+INSERT INTO `doctor_level` VALUES ('4', '医师');
+INSERT INTO `doctor_level` VALUES ('5', '助理');
+INSERT INTO `doctor_level` VALUES ('6', '实习医师');
 
 -- ----------------------------
 -- Table structure for `hospital`
 -- ----------------------------
 DROP TABLE IF EXISTS `hospital`;
 CREATE TABLE `hospital` (
-  `hospital_id` varchar(12) NOT NULL,
+  `hospital_id` int(11) NOT NULL AUTO_INCREMENT,
   `hospital_name` varchar(128) DEFAULT NULL,
-  `hospital_type` varchar(2) DEFAULT NULL,
+  `hospital_type` varchar(20) DEFAULT NULL,
   `hospital_level` varchar(4) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
   `telnum` varchar(16) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `lat` varchar(12) DEFAULT NULL,
+  `lng` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`hospital_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hospital
 -- ----------------------------
+INSERT INTO `hospital` VALUES ('1', '海南省人民医院', '三级甲等', '1', '0898-222222', '海南省人民医院', '222', '2222');
+INSERT INTO `hospital` VALUES ('2', '海南省中医院', '三级甲等', '2', '0898-333333', '海南省中医院', '33333', '33333');
 
 -- ----------------------------
 -- Table structure for `mobile_nav`
@@ -221,10 +227,10 @@ CREATE TABLE `plat_nav` (
 -- ----------------------------
 -- Records of plat_nav
 -- ----------------------------
-INSERT INTO `plat_nav` VALUES ('1', '1', 'N000001');
-INSERT INTO `plat_nav` VALUES ('2', '1', 'N000002');
-INSERT INTO `plat_nav` VALUES ('3', '1', 'N000003');
-INSERT INTO `plat_nav` VALUES ('4', '1', 'N000004');
+INSERT INTO `plat_nav` VALUES ('1', 'P', 'N000001');
+INSERT INTO `plat_nav` VALUES ('2', 'P', 'N000002');
+INSERT INTO `plat_nav` VALUES ('3', 'P', 'N000003');
+INSERT INTO `plat_nav` VALUES ('4', 'P', 'N000004');
 
 -- ----------------------------
 -- Table structure for `product_category`
@@ -243,7 +249,7 @@ CREATE TABLE `product_category` (
 -- ----------------------------
 -- Records of product_category
 -- ----------------------------
-INSERT INTO `product_category` VALUES ('16', '生活用品1', null, '17', '0');
+INSERT INTO `product_category` VALUES ('16', '生活用品1', 'icon-home', '17', '0');
 INSERT INTO `product_category` VALUES ('17', '建材1', null, '0', '0');
 INSERT INTO `product_category` VALUES ('18', '建材', '', '0', '0');
 INSERT INTO `product_category` VALUES ('19', '家用建材', '', '18', '0');
@@ -311,14 +317,6 @@ INSERT INTO `product_ku` VALUES ('5902', '小儿咳喘灵口服液（维萃）',
 INSERT INTO `product_ku` VALUES ('5903', '辛芩颗粒（康裕）', '6924426568194', '00029', '28', null);
 INSERT INTO `product_ku` VALUES ('5904', '熊胆视清护理液（创美）', '6970101010076', '00032', '29', null);
 INSERT INTO `product_ku` VALUES ('5905', '海马抑菌油-创美', '6970101011417', '00040', '30', null);
-INSERT INTO `product_ku` VALUES ('5906', '施巴环环圈装避孕套（巅峰1号）', '6936755766691', '00042', '26', null);
-INSERT INTO `product_ku` VALUES ('5907', '同泰牌维生素C钙奶咀嚼片', '6936930001937', '00047', '31', null);
-INSERT INTO `product_ku` VALUES ('5908', '施巴极致薄装避孕套（巅峰1号）', '6936755766684', '00051', '26', null);
-INSERT INTO `product_ku` VALUES ('5909', '消痛贴肩周痛-黄皮肤', '6925496101922', '00068', '32', null);
-INSERT INTO `product_ku` VALUES ('5910', '九华痔疮栓（仁和中方）', '6923703800620', '00070', '33', null);
-INSERT INTO `product_ku` VALUES ('5911', '抑霉菌洗液（妇炎洁）', '6923601907377', '00080', '34', null);
-INSERT INTO `product_ku` VALUES ('7818', '施巴极致薄装避孕套（巅峰1号）', '69367557666889899', '00051', '55', null);
-INSERT INTO `product_ku` VALUES ('97', ' 卡西欧g-shock手表', '21321321322', null, '22', null);
 
 -- ----------------------------
 -- Table structure for `reserve`
@@ -328,16 +326,82 @@ CREATE TABLE `reserve` (
   `reserve_id` varchar(12) NOT NULL,
   `from_userid` int(11) DEFAULT NULL,
   `to_userid` int(11) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(4) DEFAULT NULL,
   `reserve_time` varchar(6) DEFAULT NULL,
-  `reserve_date` varchar(8) DEFAULT NULL,
+  `reserve_date` date DEFAULT NULL,
   `reserve_address` varchar(100) DEFAULT NULL,
+  `lat` varchar(12) DEFAULT NULL,
+  `lng` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`reserve_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reserve
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `rights`
+-- ----------------------------
+DROP TABLE IF EXISTS `rights`;
+CREATE TABLE `rights` (
+  `right_id` varchar(20) NOT NULL COMMENT '菜单编号',
+  `right_name` varchar(30) NOT NULL DEFAULT '' COMMENT '菜单名称',
+  `right_icon` varchar(40) DEFAULT '' COMMENT '菜单链接classname',
+  `link_url` varchar(100) DEFAULT '' COMMENT '菜单访问url，相当于actionname',
+  `menu_type` varchar(1) NOT NULL DEFAULT '0' COMMENT '0.根节点 1.菜单 2.按钮',
+  `oper_type` varchar(2) DEFAULT NULL,
+  `parent_id` varchar(20) NOT NULL DEFAULT '0' COMMENT '菜单父节点',
+  `request_url` varchar(100) DEFAULT '' COMMENT '对应的actionname',
+  `status` varchar(4) DEFAULT '0' COMMENT '是否启用 0：启用，1：不启用',
+  `sort` int(3) DEFAULT '255' COMMENT '菜单排序，255排在最后，0最前',
+  PRIMARY KEY (`right_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+
+-- ----------------------------
+-- Records of rights
+-- ----------------------------
+INSERT INTO `rights` VALUES ('M001', '权限管理', 'icon-setting', '', '1', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M001001', '菜单管理', 'icon-menu', '', '0', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M002', '商户管理', '', '', '0', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M002001', '商户管理', '', '', '0', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M002002', '社区医院', '', '', '0', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M003', '用户管理', '', '', '0', null, '0', '', '0', '255');
+INSERT INTO `rights` VALUES ('M004', '参数设置', '', '', '0', null, '0', '', '0', '255');
+
+-- ----------------------------
+-- Table structure for `role`
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `role_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '角色id',
+  `role_name` varchar(20) DEFAULT NULL COMMENT '角色名称',
+  `ifmodify` varchar(1) DEFAULT '0' COMMENT '可否修改1，不可修改，0：可以修改',
+  `ifdelete` varchar(1) DEFAULT '0' COMMENT '可否删除 1，不可删除，0：可以删除',
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('1', '系统管理员', '0', '1');
+INSERT INTO `role` VALUES ('2', '社区医院', '0', '0');
+INSERT INTO `role` VALUES ('3', '个人用户-（医师）', '0', '0');
+INSERT INTO `role` VALUES ('4', '个人用户-（患者）', '0', '0');
+INSERT INTO `role` VALUES ('5', '药品供应商', '0', '0');
+
+-- ----------------------------
+-- Table structure for `rolerights`
+-- ----------------------------
+DROP TABLE IF EXISTS `rolerights`;
+CREATE TABLE `rolerights` (
+  `role_id` int(11) NOT NULL,
+  `right_id` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of rolerights
 -- ----------------------------
 
 -- ----------------------------
@@ -354,6 +418,13 @@ CREATE TABLE `subject` (
 -- Records of subject
 -- ----------------------------
 INSERT INTO `subject` VALUES ('S000001', '骨科');
+INSERT INTO `subject` VALUES ('S000002', '儿科');
+INSERT INTO `subject` VALUES ('S000003', '妇科');
+INSERT INTO `subject` VALUES ('S000004', '脑外科');
+INSERT INTO `subject` VALUES ('S000005', '肿瘤科');
+INSERT INTO `subject` VALUES ('S000006', '皮肤科');
+INSERT INTO `subject` VALUES ('S000007', '心外科');
+INSERT INTO `subject` VALUES ('S000008', '放射科');
 
 -- ----------------------------
 -- Table structure for `travel_schedule`
@@ -361,7 +432,8 @@ INSERT INTO `subject` VALUES ('S000001', '骨科');
 DROP TABLE IF EXISTS `travel_schedule`;
 CREATE TABLE `travel_schedule` (
   `travel_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `business_date` date NOT NULL,
   `begin_time` varchar(6) DEFAULT NULL,
   `end_time` varchar(6) DEFAULT NULL,
@@ -375,7 +447,7 @@ CREATE TABLE `travel_schedule` (
 -- ----------------------------
 -- Records of travel_schedule
 -- ----------------------------
-INSERT INTO `travel_schedule` VALUES ('1', '1', '2017-11-21', '7:00', '11:00', '海南省人民医院', '0.33311', '2.3312112', '1');
+INSERT INTO `travel_schedule` VALUES ('1', '1', null, '2017-11-21', '7:00', '11:00', '海南省人民医院', '0.33311', '2.3312112', '1');
 
 -- ----------------------------
 -- Table structure for `user_info`
