@@ -2,9 +2,11 @@ package com.lming.chcservice.aspect;
 
 import com.lming.chcservice.constant.CookieConstant;
 import com.lming.chcservice.constant.RedisConstant;
+import com.lming.chcservice.dto.UserInfoDTO;
 import com.lming.chcservice.exception.ChcAuthorizeException;
 import com.lming.chcservice.exception.ChcProcessException;
 import com.lming.chcservice.util.CookieUtil;
+import com.lming.chcservice.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,6 +20,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户登录切面
@@ -36,13 +39,16 @@ public class ChcAuthorizeAspect {
     @Pointcut("execution(public * com.lming.chcservice.controller.OrderController.*(..))"
             + "&& execution(public * com.lming.chcservice.controller.ReserveController.*(..))"
     )
-    public void verify(){};
+    public void verify() {
+    }
+
+    ;
 
 
     @Before("verify()")
-    public void doVerify(){
-       ServletRequestAttributes requestAttributes =  (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-       HttpServletRequest request = requestAttributes.getRequest();
+    public void doVerify() {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
 
         Cookie cookie = CookieUtil.get(request, CookieConstant.TOKEN);
 //        if(cookie==null)
@@ -53,16 +59,19 @@ public class ChcAuthorizeAspect {
 //        }
         String token = cookie == null ? request.getParameter("token") : cookie.getValue();
         // redis中是否存在改token
-        String openid = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX,token));
-        if(StringUtils.isEmpty(openid))
-        {
-            log.warn("【登录校验】- redis中找不到token，token={}",token);
+        String userJsonData = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX, token));
+        UserInfoDTO userInfoDTO = JsonUtil.json2Entity(userJsonData, UserInfoDTO.class);
+        if (userInfoDTO == null) {
+            log.warn("【登录校验】- redis中找不到token，token={}", token);
             throw new ChcAuthorizeException();
         }
 
-       //  更新用户cookie时间，redis不动
-
-
+        //  更新redis中的token失效时间
+        //  重新生成一个新的token
+        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
+                JsonUtil.toJson(userInfoDTO),
+                RedisConstant.TOKEN_EXPIRE_TIME,
+                TimeUnit.SECONDS);
     }
 
 }

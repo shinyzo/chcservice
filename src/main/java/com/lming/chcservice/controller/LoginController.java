@@ -9,6 +9,7 @@ import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.entity.UserInfo;
 import com.lming.chcservice.service.UserService;
 import com.lming.chcservice.util.CookieUtil;
+import com.lming.chcservice.util.JsonUtil;
 import com.lming.chcservice.util.ResultVOUtil;
 import com.lming.chcservice.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
@@ -45,17 +46,18 @@ public class LoginController {
            return ResultVOUtil.error(ResultEnum.LOGIN_FAILED);
         }
 
+
         // 设置token至redis 采用分布式session
         String token = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
-                userInfo.getOpenid(),
-                RedisConstant.TOKEN_EXPIRE_TIME,
-                TimeUnit.SECONDS);
-        // 设置token至Cookie
-        CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE_TIME);
-
         UserInfoDTO userInfoDTO = UserInfo2UserInfoDTOConverter.convert(userInfo);
         userInfoDTO.setToken(token);
+        // 设置token至Cookie
+        CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE_TIME);
+        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
+                JsonUtil.toJson(userInfoDTO),
+                RedisConstant.TOKEN_EXPIRE_TIME,
+                TimeUnit.SECONDS);
+
         return ResultVOUtil.success(userInfoDTO);
     }
 
@@ -66,10 +68,10 @@ public class LoginController {
         Cookie cookie = CookieUtil.get(request,CookieConstant.TOKEN);
         if(cookie!=null)
         {
-            // 删除redis 对应的token
-            redisTemplate.opsForValue().getOperations().delete(String.format(RedisConstant.TOKEN_PREFIX,cookie.getValue()));
             // 清除cookie中的token
             CookieUtil.set(resposne,CookieConstant.TOKEN,null,0);
+            // 删除redis 对应的token
+            redisTemplate.opsForValue().getOperations().delete(String.format(RedisConstant.TOKEN_PREFIX,cookie.getValue()));
         }
     }
 
