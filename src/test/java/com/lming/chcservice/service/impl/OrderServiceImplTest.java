@@ -1,6 +1,6 @@
 package com.lming.chcservice.service.impl;
 
-import com.lming.chcservice.dto.OrderDTO;
+import com.lming.chcservice.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,14 +21,14 @@ public class OrderServiceImplTest {
     @Test
     public void findByReserveId() throws Exception {
         String reserveId = "1";
-        OrderDTO orderDTO = orderService.findByReserveId(reserveId);
+        OrderVO orderDTO = orderService.findByReserveId(reserveId);
         log.info("orderDTO:{}", orderDTO);
     }
 
     @Test
     public void findByOrderId() throws Exception {
         String orderId = "1111111";
-        OrderDTO orderDTO = orderService.findByOrderId(orderId);
+        OrderVO orderDTO = orderService.findByOrderId(orderId);
         log.info("orderDTO:{}", orderDTO);
     }
 
@@ -38,7 +36,7 @@ public class OrderServiceImplTest {
     public void findByDoctorId() throws Exception {
 
         Integer doctorId = 1;
-        List<OrderDTO> orderDTOList = orderService.findByDoctorId(doctorId);
+        List<OrderVO> orderDTOList = orderService.findByDoctorId(doctorId);
         log.info("orderDTO:{}", orderDTOList);
 
     }
@@ -46,7 +44,7 @@ public class OrderServiceImplTest {
     @Test
     public void findByFromUserId() throws Exception {
         Integer fromUserId = 1;
-        List<OrderDTO> orderDTOList = orderService.findByFromUserId(fromUserId);
+        List<OrderVO> orderDTOList = orderService.findByFromUserId(fromUserId);
         log.info("orderDTO:{}", orderDTOList);
 
     }

@@ -1,4 +1,4 @@
-package com.lming.chcservice.dto;
+package com.lming.chcservice.vo;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.util.Date;
  * 返回给前端数据
  */
 @Data
-public class UserInfoDTO {
+public class UserInfoVO {
 
     /**
      * 用户id

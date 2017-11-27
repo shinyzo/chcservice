@@ -1,6 +1,6 @@
 package com.lming.chcservice.controller;
 
-import com.lming.chcservice.dto.OrderDTO;
+import com.lming.chcservice.vo.OrderVO;
 import com.lming.chcservice.service.impl.OrderServiceImpl;
 import com.lming.chcservice.util.ResultVOUtil;
 import com.lming.chcservice.vo.ResultVO;
@@ -26,28 +26,28 @@ public class OrderController {
 
     @GetMapping("/orders/findByOrderId")
     public ResultVO findByOrderId(@RequestParam("orderId") String orderId){
-       OrderDTO orderDTO =  orderService.findByOrderId(orderId);
+       OrderVO orderDTO =  orderService.findByOrderId(orderId);
 
         return ResultVOUtil.success(orderDTO);
     }
 
     @GetMapping("/orders/findByDoctorId")
     public ResultVO findByDoctorId(@RequestParam("doctorId") Integer doctorId){
-        List<OrderDTO> orderDTOList =  orderService.findByDoctorId(doctorId);
+        List<OrderVO> orderDTOList =  orderService.findByDoctorId(doctorId);
 
         return ResultVOUtil.success(orderDTOList);
     }
 
     @GetMapping("/orders/findByFromUserId")
     public ResultVO findByFromUserId(@RequestParam("fromUserId") Integer fromUserId){
-        List<OrderDTO> orderDTOList =  orderService.findByFromUserId(fromUserId);
+        List<OrderVO> orderDTOList =  orderService.findByFromUserId(fromUserId);
         return ResultVOUtil.success(orderDTOList);
     }
 
 
     @GetMapping("/orders/findByReserveId")
     public ResultVO findByReserveId(@RequestParam("reserveId") String reserveId){
-        OrderDTO orderDTO =  orderService.findByReserveId(reserveId);
+        OrderVO orderDTO =  orderService.findByReserveId(reserveId);
         return ResultVOUtil.success(orderDTO);
     }
 

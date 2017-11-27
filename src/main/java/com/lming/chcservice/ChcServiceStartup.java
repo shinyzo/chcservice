@@ -4,6 +4,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
+ *
+ * tomcat容器依赖启动类
  * @Author shinyZo
  * @date 2017-11-27
  * @description

@@ -1,10 +1,9 @@
 package com.lming.chcservice.controller;
 
-import com.fasterxml.jackson.databind.BeanProperty;
 import com.lming.chcservice.constant.CookieConstant;
 import com.lming.chcservice.constant.RedisConstant;
-import com.lming.chcservice.converter.UserInfo2UserInfoDTOConverter;
-import com.lming.chcservice.dto.UserInfoDTO;
+import com.lming.chcservice.converter.UserInfo2UserInfoVOConverter;
+import com.lming.chcservice.vo.UserInfoVO;
 import com.lming.chcservice.enums.ResultEnum;
 import com.lming.chcservice.entity.UserInfo;
 import com.lming.chcservice.service.UserService;
@@ -49,7 +48,7 @@ public class LoginController {
 
         // 设置token至redis 采用分布式session
         String token = UUID.randomUUID().toString();
-        UserInfoDTO userInfoDTO = UserInfo2UserInfoDTOConverter.convert(userInfo);
+        UserInfoVO userInfoDTO = UserInfo2UserInfoVOConverter.convert(userInfo);
         userInfoDTO.setToken(token);
         // 设置token至Cookie
         CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE_TIME);

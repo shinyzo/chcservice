@@ -2,13 +2,11 @@ package com.lming.chcservice.aspect;
 
 import com.lming.chcservice.constant.CookieConstant;
 import com.lming.chcservice.constant.RedisConstant;
-import com.lming.chcservice.dto.UserInfoDTO;
+import com.lming.chcservice.vo.UserInfoVO;
 import com.lming.chcservice.exception.ChcAuthorizeException;
-import com.lming.chcservice.exception.ChcProcessException;
 import com.lming.chcservice.util.CookieUtil;
 import com.lming.chcservice.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -60,14 +58,14 @@ public class ChcAuthorizeAspect {
         String token = cookie == null ? request.getParameter("token") : cookie.getValue();
         // redis中是否存在改token
         String userJsonData = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX, token));
-        UserInfoDTO userInfoDTO = JsonUtil.string2Obj(userJsonData, UserInfoDTO.class);
+        UserInfoVO userInfoDTO = JsonUtil.string2Obj(userJsonData, UserInfoVO.class);
         if (userInfoDTO == null) {
             log.warn("【登录校验】- redis中找不到token，token={}", token);
             throw new ChcAuthorizeException();
         }
 
         //  更新redis中的token失效时间
-        //  重新生成一个新的token
+        //  重新生成一个新的token 安全性更高防止用户操作之后他人盗用该token
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
                 JsonUtil.obj2String(userInfoDTO),
                 RedisConstant.TOKEN_EXPIRE_TIME,
