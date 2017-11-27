@@ -54,7 +54,7 @@ public class LoginController {
         // 设置token至Cookie
         CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE_TIME);
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
-                JsonUtil.toJson(userInfoDTO),
+                JsonUtil.obj2String(userInfoDTO),
                 RedisConstant.TOKEN_EXPIRE_TIME,
                 TimeUnit.SECONDS);
 

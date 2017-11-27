@@ -97,7 +97,7 @@ public class TreeUtil {
 
         TreeUtil treeUtil = new TreeUtil();
         List<Object> objectList = treeUtil.treeMenu(treeNodeList);
-        System.out.print(JsonUtil.toJson(objectList));
+        System.out.print(JsonUtil.obj2StringPretty(objectList));
 
     }
 

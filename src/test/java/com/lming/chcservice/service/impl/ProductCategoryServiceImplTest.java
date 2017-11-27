@@ -1,7 +1,6 @@
 package com.lming.chcservice.service.impl;
 
-import com.lming.chcservice.dto.ProductCategoryTree;
-import com.lming.chcservice.util.JsonUtil;
+import com.lming.chcservice.util.GsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author shinyZo
@@ -32,7 +29,7 @@ public class ProductCategoryServiceImplTest {
     @Test
     public void findAll() throws Exception {
         List<Object> treeList = productCategoryService.findAll();
-        log.info("treelist={}", JsonUtil.toJson(treeList));
+        log.info("treelist={}", GsonUtil.toJson(treeList));
     }
 
 }

@@ -60,7 +60,7 @@ public class ChcAuthorizeAspect {
         String token = cookie == null ? request.getParameter("token") : cookie.getValue();
         // redis中是否存在改token
         String userJsonData = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX, token));
-        UserInfoDTO userInfoDTO = JsonUtil.json2Entity(userJsonData, UserInfoDTO.class);
+        UserInfoDTO userInfoDTO = JsonUtil.string2Obj(userJsonData, UserInfoDTO.class);
         if (userInfoDTO == null) {
             log.warn("【登录校验】- redis中找不到token，token={}", token);
             throw new ChcAuthorizeException();
@@ -69,7 +69,7 @@ public class ChcAuthorizeAspect {
         //  更新redis中的token失效时间
         //  重新生成一个新的token
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),
-                JsonUtil.toJson(userInfoDTO),
+                JsonUtil.obj2String(userInfoDTO),
                 RedisConstant.TOKEN_EXPIRE_TIME,
                 TimeUnit.SECONDS);
     }
