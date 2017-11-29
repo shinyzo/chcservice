@@ -27,4 +27,14 @@ public class ReserveServiceImpl implements ReserveService {
     public List<ReserveEntity> findAllByDoctorId(Integer doctorId) {
         return mapper.findAllByDoctorId(doctorId);
     }
+
+    @Override
+    public int create(ReserveEntity reserveEntity) {
+        return mapper.createReserve(reserveEntity);
+    }
+
+    @Override
+    public int cancel(ReserveEntity reserveEntity) {
+        return mapper.cancelReserve(reserveEntity);
+    }
 }

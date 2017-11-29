@@ -42,24 +42,6 @@ public class MobileNavController {
         return ResultVOUtil.success(mobileNavList);
     }
 
-    /**
-     * RestFul Api
-     * @param platType
-     * @return
-     */
-    @GetMapping(value = "/navs/{id}")
-    public ResultVO list(@PathVariable("id") String platType) {
-        // 根据用户信息获取用户的导航
-        PlatTypeEnum platTypeEnum = PlatTypeEnum.getPlatTypeEnum(platType);
-        if (platTypeEnum == null) {
-            throw new ChcProcessException(ResultEnum.APP_TYPE_ERROR);
-        }
-        List<MobileNav> mobileNavList = mobileNavService.getNavByPlatType(platTypeEnum.toString());
-        log.info("【导航列表】 -获取用户导航列表，navList={}", mobileNavList);
-        return ResultVOUtil.success(mobileNavList);
-    }
-
-
     @GetMapping(value = "/navs")
     public ResultVO findList(@RequestParam("platType") String platType) {
         // 根据用户信息获取用户的导航

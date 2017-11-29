@@ -22,4 +22,8 @@ public interface ReserveService {
      * @return
      */
     List<ReserveEntity> findAllByDoctorId(Integer doctorId);
+
+    int create(ReserveEntity reserveEntity);
+
+    int cancel(ReserveEntity reserveEntity);
 }

@@ -1,8 +1,11 @@
 package com.lming.chcservice.enums;
 
+import lombok.Getter;
+
 /**
  * 预约状态
  */
+@Getter
 public enum ReserveStatusEnum {
 
     IN("1", "预约中"),

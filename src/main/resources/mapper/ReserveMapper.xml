@@ -60,4 +60,29 @@
         <include refid="where_case"/>
     </select>
 
+    <!-- 生成预约单 -->
+    <insert id="createReserve" parameterType="ReserveEntity">
+        INSERT  INTO  reserve (reserve_id,from_userid,to_userid,doctor_id,status)
+        VALUES (#{reserveId},#{fromUserId},#{toUserId},#{doctorId},#{status})
+    </insert>
+
+    <!-- 取消预约 -->
+    <update id="cancelReserve" parameterType="java.lang.String">
+        update reserve set status=#{status}
+        where reserve_id = #{reserveId}
+    </update>
+
+    <!-- 预约成功 -->
+    <update id="successReserve" parameterType="ReserveEntity">
+        update reserve
+        set
+            status=#{status},
+            reserve_time=#{reserveTime},
+            reserve_address=#{reserveAddress},
+            lat=#{lat},
+            lng=#{lng}
+        where reserve_id = #{reserveId}
+    </update>
+
+
 </mapper>

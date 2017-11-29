@@ -25,6 +25,14 @@ public class KeyUtil {
 
     }
 
+    /**
+     * 获取预约号
+     * @return
+     */
+    public static synchronized  String getReserveId(){
+        return DateUtil.getCurrentTime()+ String.valueOf( new Random().nextInt(900000)+100000);
+    }
+
 
 
     public static void main(String[] args)

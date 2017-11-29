@@ -17,4 +17,8 @@ public interface ReserveMapper {
      * @return
      */
     List<ReserveEntity> findAllByDoctorId(Integer doctorId);
+
+    int createReserve(ReserveEntity reserveEntity);
+
+    int cancelReserve(ReserveEntity reserveEntity);
 }
